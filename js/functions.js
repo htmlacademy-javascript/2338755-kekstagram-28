@@ -4,14 +4,8 @@
 // имя_функции('проверяемая строка', 18); // Результат: true - строка проходит по длине
 // имя_функции('проверяемая строка', 10); // Результат: false — строка не проходит
 
-const stringForm = function (row, correctNumber) {
-  if (row.length <= correctNumber) {
-    return('Результат: true');
-  } else {
-    return('Результат: false');
-  }
-}
-
+const isGetString = (row, correctNumber) => row.length <= correctNumber ? 'Результат: true' : 'Результат: false';
+isGetString();
 // Функция для проверки, является ли строка палиндромом. Палиндром — это слово или фраза, которые одинаково читаются и слева направо и справа налево. Например:
 
 // имя_функции('топот'); // Результат: true - строка является палиндромом
@@ -21,15 +15,15 @@ const stringForm = function (row, correctNumber) {
 
 // имя_функции('Лёша на полке клопа нашёл '); // Результат: true - это палиндром
 
-const wordP = function (string) {
+const isPalindrom = function (string) {
   const stringText = string.toLowerCase().replaceAll(' ', '');
   let stringReverse = '';
   for (let i = stringText.length - 1; i >= 0; i--) {
     stringReverse += stringText.at(i);
   }
   return stringText === stringReverse;
-}
-
+};
+isPalindrom();
 // *Функция, которая принимает строку, извлекает содержащиеся в ней цифры от 0 до 9 и возвращает их в виде целого положительного числа. Если в строке нет ни одной цифры, функция должна вернуть NaN:
 
 // имя_функции('2023 год');            // Результат: число 2023
@@ -50,8 +44,8 @@ const extractNumber = (string) => {
     }
   }
   return parseInt(result, 10);
-}
-
+};
+extractNumber();
 // Функция, которая принимает три параметра: исходную строку, минимальную длину и строку с добавочными символами — и возвращает исходную строку, дополненную указанными символами до заданной длины. Символы добавляются в начало строки. Если исходная строка превышает заданную длину, она не должна обрезаться. Если «добивка» слишком длинная, она обрезается с конца.
 
 // Эта функция нам пригодится для формирования адресов файлов. Примеры её использования:
@@ -74,10 +68,11 @@ const extractNumber = (string) => {
 
 const myPadStart = (string, minLength, pad) => {
   let result = string;
-    while (result.length < minLength) {
-      const newResultLength = result.length + pad.length;
-      const actualPad = newResultLength <= minLength ? pad : pad.slice(0, minLength - newResultLength);
-      result = actualPad + result;
+  while (result.length < minLength) {
+    const newResultLength = result.length + pad.length;
+    const actualPad = newResultLength <= minLength ? pad : pad.slice(0, minLength - newResultLength);
+    result = actualPad + result;
   }
   return result;
-}
+};
+myPadStart();
